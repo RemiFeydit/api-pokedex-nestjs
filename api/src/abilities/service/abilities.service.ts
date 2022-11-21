@@ -17,7 +17,7 @@ export class AbilitiesService {
         return await this.AbilitiesRepository.save(ability)
     }
 
-    async getAbilitiesByName(type: string): Promise<AbilitiesEntity> {
+    async getAbilitiesIdByName(type: string): Promise<AbilitiesEntity> {
         return await this.AbilitiesRepository.findOne({
             where: {
                 AbilitiesName: type

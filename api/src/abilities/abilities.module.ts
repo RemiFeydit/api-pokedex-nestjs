@@ -7,6 +7,7 @@ import { AbilitiesService } from './service/abilities.service';
 @Module({
   imports: [TypeOrmModule.forFeature([AbilitiesEntity])],
   controllers: [AbilitiesController],
-  providers: [AbilitiesService]
+  providers: [AbilitiesService],
+  exports: [AbilitiesService]
 })
 export class AbilitiesModule {}
