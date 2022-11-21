@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm"
+import { AbilitiesEntity } from "src/abilities/abilities.entity"
+import { PokemonAbilitiesEntity } from "src/pokemon-abilities/pokemon-abilities.entity"
+import {Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm"
 
 @Entity("Pokemons")
 export class PokemonsEntity {
@@ -31,4 +33,7 @@ export class PokemonsEntity {
       description: "The description of the pokemon",
     })
     PokemonDescription : string
+
+    @OneToMany(() => PokemonAbilitiesEntity, pokemonAbilities => pokemonAbilities.pokemons)
+    public PokemonAbilities!: PokemonAbilitiesEntity[];
 }

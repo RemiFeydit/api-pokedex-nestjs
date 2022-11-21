@@ -14,6 +14,6 @@ export class TypesEntity {
     })
     TypeName: string
 
-    @OneToMany(() => MovesEntity, (move) => move.move)
+    @OneToMany(() => MovesEntity, (move) => move.type)
     moves: MovesEntity[]
 }

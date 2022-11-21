@@ -13,7 +13,7 @@ export class MovesService {
     }
 
     async create(move: MovesEntity, type: TypesEntity): Promise<MovesEntity>{
-        move.move = type
+        move.type = type
         console.log(move);
         return this.MovesRepository.save(move)
     }
