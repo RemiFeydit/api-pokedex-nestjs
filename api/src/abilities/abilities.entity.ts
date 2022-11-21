@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { PokemonAbilitiesEntity } from "src/pokemon-abilities/pokemon-abilities.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("Abilities")
 export class AbilitiesEntity {
@@ -21,4 +22,7 @@ export class AbilitiesEntity {
         default: "Augmente des trucs"
     })
     AbilitiesDescription: string
+
+    @OneToMany(() => PokemonAbilitiesEntity, pokemonAbilities => pokemonAbilities.abilities)
+    public PokemonAbilities!: PokemonAbilitiesEntity[];
 }

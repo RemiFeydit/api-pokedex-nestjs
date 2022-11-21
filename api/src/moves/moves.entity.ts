@@ -50,5 +50,5 @@ export class MovesEntity {
 
     @ManyToOne(() => TypesEntity, (type) => type.moves)
     @JoinColumn({name: "TypeId"})
-    move: TypesEntity
+    type: TypesEntity
 }

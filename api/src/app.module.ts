@@ -5,7 +5,7 @@ import { MovesModule } from './moves/moves.module';
 import { TypesModule } from './types/types.module';
 import { AbilitiesModule } from './abilities/abilities.module';
 import { BaseStatsModule } from './base-stats/base-stats.module';
-
+import { PokemonAbilitiesModule } from './pokemon-abilities/pokemon-abilities.module';
 @Module({
   imports: [PokemonsModule,
     TypeOrmModule.forRoot({
@@ -18,6 +18,7 @@ import { BaseStatsModule } from './base-stats/base-stats.module';
     TypesModule,
     AbilitiesModule,
     BaseStatsModule,
+    PokemonAbilitiesModule,
    ],
   controllers: [],
   providers: [],
