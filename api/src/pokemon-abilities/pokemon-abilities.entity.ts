@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { AbilitiesEntity } from "src/abilities/abilities.entity";
 import { PokemonsEntity } from "src/pokemons/pokemons.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
@@ -15,8 +16,14 @@ export class PokemonAbilitiesEntity {
     public abilities!: AbilitiesEntity
 
     @Column()
+    @ApiProperty({
+        description: "Define if the ability is hidden or not"
+    })
     IsHidden: boolean
     
     @Column()
+    @ApiProperty({
+        description:"the slot of the ability"
+    })
     slot: number
 }

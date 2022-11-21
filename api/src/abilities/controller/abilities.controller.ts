@@ -21,6 +21,6 @@ export class AbilitiesController {
     @Get('/:abilitiesName')
     @ApiParam({name: "AbilitiesName"})
     async GetAbilitiesName(@Param("AbilitiesName") ability: string) : Promise<AbilitiesEntity>{
-        return await this.AbilitiesService.getAbilitiesByName(ability)
+        return await this.AbilitiesService.getAbilitiesIdByName(ability)
     }
 }
