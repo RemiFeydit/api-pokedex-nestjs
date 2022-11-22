@@ -4,77 +4,48 @@ import HomeHeader from '../components/HomeHeader';
 import InputButton from '../components/InputButton';
 
 export default function PokemonAbilities() {
-  function customReplaceAll(string, array, replacer) {
-    for (let i = 0; i < array.length; i++) {
-      string = string.replaceAll(array[i], replacer);
-    }
-    return string;
-  }
-
   async function handleClick() {
-    let pokemonAbilities = {};
-    for (let i = 1; i < 2; i++) {
+    for (let i = 1; i < 906; i++) {
       let pokemonRequest = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => response.json())
         .then((data) => data);
       let pokemonSpecies = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${customReplaceAll(
-          pokemonRequest.name,
-          [
-            '-normal',
-            '-plant',
-            '-altered',
-            '-land',
-            '-red-striped',
-            '-standard',
-            '-incarnate',
-            '-ordinary',
-            '-aria',
-            '-male',
-            '-shield',
-            '-average',
-            '-50',
-            '-baile',
-            '-midday',
-            '-solo',
-            '-red-meteor',
-            '-disguised',
-            '-amped',
-            '-ice',
-            '-full-belly',
-            '-single-strike',
-          ],
-          '',
-        )}`,
+        `https://pokeapi.co/api/v2/pokemon-species/${i}`,
       )
         .then((response) => response.json())
         .then((data) => data);
-      pokemonAbilities = {
-        slot: 1,
-        isHidden: true,
-      };
       let pokemonName = pokemonSpecies.names.filter(
         (pokemon) => pokemon.language.name === 'fr',
       )[0].name;
-      console.log(`${pokemonName}`);
-      console.log(pokemonRequest);
-      //   try {
-      //     await fetch(
-      //       `/base-pokemon-abilities/pokemon/${PokemonName}/ability/Chlorophylle/`,
-      //       {
-      //         method: 'POST',
-      //         mode: 'cors',
-      //         headers: {
-      //           Accept: 'application/json',
-      //           'Content-Type': 'application/json',
-      //         },
-      //         body: JSON.stringify(baseStats), // body data type must match "Content-Type" header
-      //       },
-      //     );
-      //   } catch (error) {
-      //     alert(error);
-      //   }
-      // }
+      for (const element of pokemonRequest.abilities) {
+        let ability = await fetch(element.ability.url)
+          .then((response) => response.json())
+          .then((data) => data);
+        console.log(pokemonRequest);
+        let abilityName = ability.names.filter(
+          (name) => name.language.name === 'fr',
+        )[0].name;
+        let pokemonAbilities = {
+          Slot: element.slot,
+          IsHidden: element.is_hidden,
+        };
+        try {
+          await fetch(
+            `/pokemon-abilities/pokemon/${pokemonName}/ability/${abilityName}/`,
+            {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(pokemonAbilities), // body data type must match "Content-Type" header
+            },
+          );
+        } catch (error) {
+          alert(error);
+        }
+      }
     }
   }
   return (

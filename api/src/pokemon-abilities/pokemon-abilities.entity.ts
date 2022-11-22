@@ -25,5 +25,5 @@ export class PokemonAbilitiesEntity {
     @ApiProperty({
         description:"the slot of the ability"
     })
-    slot: number
+    Slot: number
 }
