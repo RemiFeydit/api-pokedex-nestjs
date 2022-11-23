@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { MovesEntity } from "src/moves/moves.entity";
+import { PokemonTypesEntity } from "src/pokemon-types/pokemon-types.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("Types")
@@ -16,4 +17,7 @@ export class TypesEntity {
 
     @OneToMany(() => MovesEntity, (move) => move.type)
     moves: MovesEntity[]
+
+    @OneToMany(() => PokemonTypesEntity, pokemonType => pokemonType.types)
+    public PokemonTypes!: PokemonTypesEntity[];
 }

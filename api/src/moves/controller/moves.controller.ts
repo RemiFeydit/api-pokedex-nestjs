@@ -18,6 +18,6 @@ export class MovesController {
     @Post(":moveName")
     @ApiParam({name: "moveName"})
     async Create(@Body() pokemon: MovesEntity, @Param("moveName") type : string): Promise<MovesEntity> {
-        return await this.MovesService.create(pokemon, await this.TypesService.getTypeByName(type));
+        return await this.MovesService.create(pokemon, await this.TypesService.getTypeIdByName(type));
     }
 }
