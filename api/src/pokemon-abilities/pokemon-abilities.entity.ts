@@ -7,13 +7,6 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 export class PokemonAbilitiesEntity {
     @PrimaryGeneratedColumn()
     PokemonAbilitiesId : number
-    @ManyToOne(() => PokemonsEntity, (pokemon) => pokemon.PokemonAbilities)
-    @JoinColumn({name: "PokemonId"})
-    public pokemons!: PokemonsEntity
-
-    @ManyToOne(() => AbilitiesEntity, (ability) => ability.PokemonAbilities)
-    @JoinColumn({name: "AbilitiesId"})
-    public abilities!: AbilitiesEntity
 
     @Column()
     @ApiProperty({
@@ -26,4 +19,12 @@ export class PokemonAbilitiesEntity {
         description:"the slot of the ability"
     })
     Slot: number
+
+    @ManyToOne(() => PokemonsEntity, (pokemon) => pokemon.PokemonAbilities)
+    @JoinColumn({ name: "PokemonId", referencedColumnName: "PokemonId" })
+    public pokemons!: PokemonsEntity
+
+    @ManyToOne(() => AbilitiesEntity, (ability) => ability.PokemonAbilities)
+    @JoinColumn({ name: "AbilitiesId", referencedColumnName: "AbilitiesId" })
+    public abilities!: AbilitiesEntity
 }
