@@ -8,7 +8,10 @@ export class PokemonAbilitiesEntity {
     @PrimaryGeneratedColumn()
     PokemonAbilitiesId : number
 
-    @Column()
+    @Column({
+        type: Boolean,
+        default: false,
+     })
     @ApiProperty({
         description: "Define if the ability is hidden or not"
     })
