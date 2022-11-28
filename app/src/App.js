@@ -14,25 +14,22 @@ function App() {
             <RedirectButton name="Pokemon" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
-            <RedirectButton name="BaseStats" />
+            <RedirectButton name="Abilities" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
-            <RedirectButton name="Abilities" />
+            <RedirectButton name="Types" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
             <RedirectButton name="Moves" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
-            <RedirectButton name="PokemonMoves" />
+            <RedirectButton name="PokemonAbilities" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
             <RedirectButton name="PokemonTypes" />
           </Grid>
           <Grid xsOffset={5} xs={12}>
-            <RedirectButton name="PokemonAbilities" />
-          </Grid>
-          <Grid xsOffset={5} xs={12}>
-            <RedirectButton name="Types" />
+            <RedirectButton name="PokemonMoves" />
           </Grid>
         </Grid>
       </Box>
