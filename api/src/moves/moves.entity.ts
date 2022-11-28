@@ -1,11 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { PokemonMovesEntity } from "src/pokemon-moves/pokemon-moves.entity";
 import { TypesEntity } from "src/types/types.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("Moves")
 export class MovesEntity {
     @PrimaryGeneratedColumn()
-    Moveid: number
+    MoveId: number
 
     @Column({ unique: true })
     @ApiProperty({
@@ -51,4 +52,7 @@ export class MovesEntity {
     @ManyToOne(() => TypesEntity, (type) => type.moves)
     @JoinColumn({name: "TypeId"})
     type: TypesEntity
+
+    @OneToMany(() => PokemonMovesEntity, pokemonMoves => pokemonMoves.pokemons)
+    public PokemonMoves!: PokemonMovesEntity[];
 }

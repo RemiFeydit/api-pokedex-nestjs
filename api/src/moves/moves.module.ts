@@ -8,6 +8,7 @@ import { MovesService } from './service/moves.service';
 @Module({
   imports: [TypeOrmModule.forFeature([MovesEntity]), TypesModule],
   providers: [MovesService],
-  controllers: [MovesController]
+  controllers: [MovesController],
+  exports: [MovesService]
 })
 export class MovesModule {}
