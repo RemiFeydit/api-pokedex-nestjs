@@ -17,4 +17,12 @@ export class MovesService {
         console.log(move);
         return this.MovesRepository.save(move)
     }
+
+    async getMoveIdByName(move: string): Promise<MovesEntity> {
+        return await this.MovesRepository.findOne({
+            where: {
+                MoveName: move
+            }
+        })
+    }
 }
