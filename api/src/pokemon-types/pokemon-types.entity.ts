@@ -1,5 +1,4 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { AbilitiesEntity } from "src/abilities/abilities.entity";
 import { PokemonsEntity } from "src/pokemons/pokemons.entity";
 import { TypesEntity } from "src/types/types.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
