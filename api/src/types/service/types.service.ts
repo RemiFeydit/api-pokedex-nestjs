@@ -15,7 +15,7 @@ export class TypesService {
             return await this.TypesRepository.save(type);
     }
 
-    async getTypeByName(type: string): Promise<TypesEntity> {
+    async getTypeIdByName(type: string): Promise<TypesEntity> {
         return await this.TypesRepository.findOne({
             where: {
                 TypeName: type

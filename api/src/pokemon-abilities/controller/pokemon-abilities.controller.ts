@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AbilitiesService } from 'src/abilities/service/abilities.service';
-import { PokemonsEntity } from 'src/pokemons/pokemons.entity';
 import { PokemonsService } from 'src/pokemons/service/pokemons.service';
 import { PokemonAbilitiesEntity } from '../pokemon-abilities.entity';
 import { PokemonAbilitiesService } from '../service/pokemon-abilities.service';

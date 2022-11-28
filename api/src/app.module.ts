@@ -6,6 +6,7 @@ import { TypesModule } from './types/types.module';
 import { AbilitiesModule } from './abilities/abilities.module';
 import { BaseStatsModule } from './base-stats/base-stats.module';
 import { PokemonAbilitiesModule } from './pokemon-abilities/pokemon-abilities.module';
+import { PokemonTypesModule } from './pokemon-types/pokemon-types.module';
 @Module({
   imports: [PokemonsModule,
     TypeOrmModule.forRoot({
@@ -19,6 +20,7 @@ import { PokemonAbilitiesModule } from './pokemon-abilities/pokemon-abilities.mo
     AbilitiesModule,
     BaseStatsModule,
     PokemonAbilitiesModule,
+    PokemonTypesModule,
    ],
   controllers: [],
   providers: [],

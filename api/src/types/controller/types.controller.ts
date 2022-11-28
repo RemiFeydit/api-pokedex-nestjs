@@ -21,6 +21,6 @@ export class TypesController {
     @Get("/:typeName")
     @ApiParam({name: "typeName"})
     async GetTypeByName(@Param("typeName") type: string): Promise<TypesEntity>{
-        return await this.TypeService.getTypeByName(type)
+        return await this.TypeService.getTypeIdByName(type)
     }
 }
