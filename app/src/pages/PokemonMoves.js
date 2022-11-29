@@ -26,22 +26,22 @@ export default function PokemonTypes() {
           (moveFr) => moveFr.language.name == 'fr',
         );
         let moveNameFr = moveNameFrArr[moveNameFrArr.length - 1].name;
-        // try {
-        //   await fetch(
-        //     `/pokemon-types/pokemon/${pokemonName}/type/${typeName}/`,
-        //     {
-        //       method: 'POST',
-        //       mode: 'cors',
-        //       headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json',
-        //       },
-        //       body: JSON.stringify(pokemonTypes), // body data type must match "Content-Type" header
-        //     },
-        //   );
-        // } catch (error) {
-        //   alert(error);
-        // }
+        try {
+          await fetch(
+            `/pokemon-moves/pokemon/${pokemonName}/move/${moveNameFr}/`,
+            {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({}), // body data type must match "Content-Type" header
+            },
+          );
+        } catch (error) {
+          alert(error);
+        }
       }
     }
   }
