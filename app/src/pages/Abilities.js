@@ -6,7 +6,7 @@ import InputButton from '../components/InputButton';
 export default function Abilities() {
   async function handleClick() {
     let ability = {};
-    for (let i = 2; i < 268; i++) {
+    for (let i = 1; i < 268; i++) {
       let abilityRequest = await fetch(`https://pokeapi.co/api/v2/ability/${i}`)
         .then((response) => response.json())
         .then((data) => data);
@@ -14,13 +14,13 @@ export default function Abilities() {
         (lang) => lang.language.name === 'fr',
       );
       ability = {
-        AbilitiesName: abilityRequest.names.filter(
+        ability_name: abilityRequest.names.filter(
           (name) => name.language.name === 'fr',
         )[0].name,
-        AbilitiesDescription: abDescArr[abDescArr.length - 1].flavor_text,
+        ability_description: abDescArr[abDescArr.length - 1].flavor_text,
       };
       try {
-        await fetch('/abilities', {
+        await fetch('/ability', {
           method: 'POST',
           mode: 'cors',
           headers: {

@@ -6,7 +6,11 @@ import { Types } from '../models/Types';
 
 export default function PokemonTypes() {
   async function handleClick() {
-    for (let i = 1; i < 2; i++) {
+    const numbers = Array(905)
+      .fill()
+      .map((_, index) => index + 1);
+    numbers.sort(() => Math.random() - 0.5);
+    for (let i of numbers) {
       let pokemonRequest = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => response.json())
         .then((data) => data);
@@ -28,7 +32,7 @@ export default function PokemonTypes() {
         let moveNameFr = moveNameFrArr[moveNameFrArr.length - 1].name;
         try {
           await fetch(
-            `/pokemon-moves/pokemon/${pokemonName}/move/${moveNameFr}/`,
+            `/pokemon-move/pokemon/${pokemonName}/move/${moveNameFr}/`,
             {
               method: 'POST',
               mode: 'cors',

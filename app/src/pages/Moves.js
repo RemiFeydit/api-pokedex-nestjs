@@ -2,7 +2,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { Box } from '@mui/material';
 import HomeHeader from '../components/HomeHeader';
 import InputButton from '../components/InputButton';
-import { MoveCategory } from '../models/MoveCateogry';
+import { MoveCategory } from '../models/MoveCategory';
 import { Types } from '../models/Types';
 
 export default function Moves() {
@@ -16,24 +16,24 @@ export default function Moves() {
         (lang) => lang.language.name === 'fr',
       );
       move = {
-        MoveName: moveRequest.names.filter(
+        move_name: moveRequest.names.filter(
           (pokemon) => pokemon.language.name === 'fr',
         )[0].name,
-        MoveCategory: MoveCategory[moveRequest.damage_class.name],
-        MovePower: moveRequest.power,
-        MovePP: moveRequest.pp,
-        MoveAccuracy: moveRequest.accuracy,
-        MoveDescription: moveDescArr[moveDescArr.length - 1].flavor_text,
+        move_category: MoveCategory[moveRequest.damage_class.name],
+        move_power: moveRequest.power,
+        move_pp: moveRequest.pp,
+        move_accuracy: moveRequest.accuracy,
+        move_description: moveDescArr[moveDescArr.length - 1].flavor_text,
       };
-      console.log(move.MoveName);
+      console.log(move.move_name);
       if (
         ['Lutte', 'Canon Dynamax', 'Gribouille', 'Laser Infinimax'].includes(
-          move.MoveName,
+          move.move_name,
         ) ||
-        (move.MovePP > 1 && !move.MoveName.endsWith('omax'))
+        (move.move_pp > 1 && !move.move_name.endsWith('omax'))
       ) {
         try {
-          await fetch(`/moves/${Types[moveRequest.type.name]}`, {
+          await fetch(`/move/${Types[moveRequest.type.name]}`, {
             method: 'POST',
             mode: 'cors',
             headers: {

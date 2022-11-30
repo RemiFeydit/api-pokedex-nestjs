@@ -1,30 +1,28 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PokemonsModule } from './pokemons/pokemons.module';
-import { MovesModule } from './moves/moves.module';
-import { TypesModule } from './types/types.module';
-import { AbilitiesModule } from './abilities/abilities.module';
-import { BaseStatsModule } from './base-stats/base-stats.module';
-import { PokemonAbilitiesModule } from './pokemon-abilities/pokemon-abilities.module';
-import { PokemonTypesModule } from './pokemon-types/pokemon-types.module';
-import { PokemonMovesController } from './pokemon-moves/controller/pokemon-moves.controller';
-import { PokemonMovesService } from './pokemon-moves/service/pokemon-moves.service';
-import { PokemonMovesModule } from './pokemon-moves/pokemon-moves.module';
+import { PokemonModule } from './pokemon/pokemon.module';
+import { MoveModule } from './move/move.module';
+import { TypeModule } from './type/type.module';
+import { AbilityModule } from './ability/ability.module';
+import { BaseStatModule } from './base-stat/base-stat.module';
+import { PokemonAbilityModule } from './pokemon-ability/pokemon-ability.module';
+import { PokemonTypeModule } from './pokemon-type/pokemon-type.module';
+import { PokemonMoveModule } from './pokemon-move/pokemon-move.module';
 @Module({
-  imports: [PokemonsModule,
+  imports: [PokemonModule,
     TypeOrmModule.forRoot({
       type :"sqlite",
       database: "pokemonDB.db",
       entities: [__dirname + "/**/*.entity{.ts,.js}"],
       synchronize: true
     }),
-    MovesModule,
-    TypesModule,
-    AbilitiesModule,
-    BaseStatsModule,
-    PokemonAbilitiesModule,
-    PokemonTypesModule,
-    PokemonMovesModule,
+    MoveModule,
+    TypeModule,
+    AbilityModule,
+    BaseStatModule,
+    PokemonAbilityModule,
+    PokemonTypeModule,
+    PokemonMoveModule,
    ],
   controllers: [],
   providers: [],

@@ -5,7 +5,11 @@ import InputButton from '../components/InputButton';
 
 export default function PokemonAbilities() {
   async function handleClick() {
-    for (let i = 1; i < 906; i++) {
+    const numbers = Array(905)
+      .fill()
+      .map((_, index) => index + 1);
+    numbers.sort(() => Math.random() - 0.5);
+    for (let i of numbers) {
       let pokemonRequest = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => response.json())
         .then((data) => data);
@@ -26,12 +30,12 @@ export default function PokemonAbilities() {
           (name) => name.language.name === 'fr',
         )[0].name;
         let pokemonAbilities = {
-          Slot: element.slot,
-          IsHidden: element.is_hidden,
+          slot: element.slot,
+          is_hidden: element.is_hidden,
         };
         try {
           await fetch(
-            `/pokemon-abilities/pokemon/${pokemonName}/ability/${abilityName}/`,
+            `/pokemon-ability/pokemon/${pokemonName}/ability/${abilityName}/`,
             {
               method: 'POST',
               mode: 'cors',

@@ -10,14 +10,14 @@ export default function TypesPage() {
     for (let i = 0; i < typesArr.length; i++) {
       console.log(typesArr[i]);
       try {
-        await fetch('/types', {
+        await fetch('/type', {
           method: 'POST',
           mode: 'cors',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ TypeName: typesArr[i] }), // body data type must match "Content-Type" header
+          body: JSON.stringify({ type_name: typesArr[i] }), // body data type must match "Content-Type" header
         });
       } catch (error) {
         alert(error);
