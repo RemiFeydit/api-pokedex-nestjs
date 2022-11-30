@@ -13,7 +13,11 @@ export default function Pokemon() {
 
   async function handleClick() {
     let pokemon = {};
-    for (let i = 1; i < 906; i++) {
+    const numbers = Array(905)
+      .fill()
+      .map((_, index) => index + 1);
+    numbers.sort(() => Math.random() - 0.5);
+    for (let i of numbers) {
       let pokemonRequest = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => response.json())
         .then((data) => data);
@@ -53,18 +57,19 @@ export default function Pokemon() {
         (lang) => lang.language.name === 'fr',
       );
       pokemon = {
-        PokemonName: pokemonSpecies.names.filter(
+        pokemon_pokedex_number: pokemonSpecies.id,
+        pokemon_name: pokemonSpecies.names.filter(
           (pokemon) => pokemon.language.name === 'fr',
         )[0].name,
-        PokemonHeight: pokemonRequest.height / 10,
-        PokemonWeight: pokemonRequest.weight / 10,
-        PokemonDescription:
+        pokemon_height: pokemonRequest.height / 10,
+        pokemon_weight: pokemonRequest.weight / 10,
+        pokemon_description:
           pkmnDescArr.length > 0
             ? pkmnDescArr[pkmnDescArr.length - 1].flavor_text
             : null,
       };
       try {
-        await fetch('/pokemons', {
+        await fetch('/pokemon', {
           method: 'POST',
           mode: 'cors',
           headers: {

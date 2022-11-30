@@ -31,6 +31,9 @@ function App() {
           <Grid xsOffset={5} xs={12}>
             <RedirectButton name="PokemonMoves" />
           </Grid>
+          <Grid xsOffset={5} xs={12}>
+            <RedirectButton name="BaseStats" />
+          </Grid>
         </Grid>
       </Box>
     </div>

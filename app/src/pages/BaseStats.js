@@ -13,7 +13,11 @@ export default function Pokemon() {
 
   async function handleClick() {
     let baseStats = {};
-    for (let i = 905; i > 0; i--) {
+    const numbers = Array(905)
+      .fill()
+      .map((_, index) => index + 1);
+    numbers.sort(() => Math.random() - 0.5);
+    for (let i of numbers) {
       let pokemonRequest = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => response.json())
         .then((data) => data);
@@ -50,16 +54,16 @@ export default function Pokemon() {
         .then((response) => response.json())
         .then((data) => data);
       baseStats = {
-        BaseStatsHP: pokemonRequest.stats[0].base_stat,
-        BaseStatsAttack: pokemonRequest.stats[1].base_stat,
-        BaseStatsDefense: pokemonRequest.stats[2].base_stat,
-        BaseStatsSpeAttack: pokemonRequest.stats[3].base_stat,
-        BaseStatsSpeDefense: pokemonRequest.stats[4].base_stat,
-        BaseStatsSpeed: pokemonRequest.stats[5].base_stat,
+        base_stat_hp: pokemonRequest.stats[0].base_stat,
+        base_stat_attack: pokemonRequest.stats[1].base_stat,
+        base_stat_defense: pokemonRequest.stats[2].base_stat,
+        base_stat_spe_attack: pokemonRequest.stats[3].base_stat,
+        base_stat_spe_defense: pokemonRequest.stats[4].base_stat,
+        base_stat_speed: pokemonRequest.stats[5].base_stat,
       };
       try {
         await fetch(
-          `/base-stats/${
+          `/base-stat/${
             pokemonSpecies.names.filter(
               (pokemon) => pokemon.language.name === 'fr',
             )[0].name
